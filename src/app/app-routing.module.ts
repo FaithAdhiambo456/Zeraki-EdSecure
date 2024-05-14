@@ -1,8 +1,16 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeaderComponent } from './layout/header/header.component';
+import { LoginComponent } from './dashboard/login/login.component';
+import { AuthGuard } from './config/auth.guard';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 const routes: Routes = [
+  {
+    path: "",
+    component: SidebarComponent,
+    canActivate: [AuthGuard],
+    children: [
+  { path: "", redirectTo: "/sidebar", pathMatch: "full" },
   {path: "layout",
     loadChildren: () => import("./layout/layout.module").then((m) =>m.LayoutModule)
   },
@@ -12,7 +20,8 @@ const routes: Routes = [
   {path: "schools",
     loadChildren: () => import("./schools/schools.module").then((m) => m.SchoolsModule)
   }
- 
+]
+  }
 ];
 
 @NgModule({

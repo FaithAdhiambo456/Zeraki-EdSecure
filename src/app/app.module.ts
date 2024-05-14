@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SchoolsModule } from './schools/schools.module';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SidebarComponent,
+ 
   ],
   imports: [
     BrowserModule,
